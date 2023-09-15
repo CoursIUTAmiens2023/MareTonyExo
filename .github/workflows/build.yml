@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - '*'
+      - main
 
 
 jobs:
@@ -39,8 +39,9 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
       - name: Build and analyze
+        env:
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"CoursIUTAmiens2023_QualiteDevGroupe2_AYqTwSeSUkVzydZ4LkdA" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
-          dotnet build '\MyLibraryTMA\MyLibrary.sln'
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"CoursIUTAmiens2023_MareTonyExo_AYqY2J-5UkVzydZ4Lkev" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+          dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
