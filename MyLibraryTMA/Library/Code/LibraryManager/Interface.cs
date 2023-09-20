@@ -136,7 +136,7 @@ namespace Code.LibraryManager
         private void RetourEmprunt()
         {
             Media v_media = new Media();
-            v_media = RechercherEmprunt().GetMedia();
+            v_media = m_Library[RechercherEmprunt().GetMediaNumRef()];
             m_Library += v_media;
         }
 

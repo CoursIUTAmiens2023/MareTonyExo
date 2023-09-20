@@ -6,18 +6,24 @@ namespace Data.Code
     public class Emprunt
     {
         #region Privates Members
-        private Media m_Media { get; set; }
-        private string m_NomUtilisateur { get; set; }
-        private DateTime m_DateEmprunt { get; set; }
-        private DateTime m_DateEcheance { get; set; }
-        private bool m_Retourne { get; set; }
-        private DateTime m_DateRetour { get; set; }
+        public string m_MediaName { get; set; }
+        public int m_MediaNumRef { get; set; }
+        public string m_NomUtilisateur { get; set; }
+        public DateTime m_DateEmprunt { get; set; }
+        public DateTime m_DateEcheance { get; set; }
+        public bool m_Retourne { get; set; }
+        public DateTime m_DateRetour { get; set; }
         #endregion
 
         #region Public Méthodes : accesseurs
-        public Media GetMedia()
+        public string GetMediaName()
         {
-            return m_Media;
+            return m_MediaName;
+        }
+
+        public int GetMediaNumRef()
+        {
+            return m_MediaNumRef;
         }
 
         public string GetNomUtilisateur()
@@ -59,7 +65,8 @@ namespace Data.Code
         #region Constructeurs
         public Emprunt(Media p_media, string p_nomUtilisateur, DateTime p_dateEmprunt, DateTime p_dateEcheance)
         {
-            m_Media = p_media;
+            m_MediaName = p_media.GetTitre();
+            m_MediaNumRef = p_media.GetNumeroReference();
             m_NomUtilisateur = p_nomUtilisateur;
             m_DateEmprunt = p_dateEmprunt;
             m_DateEcheance = p_dateEcheance;
@@ -71,7 +78,13 @@ namespace Data.Code
 
         public void AfficherInfos()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Titre : {m_MediaName}");
+            Console.WriteLine($"Numéro de Référence : {m_MediaNumRef}");
+            Console.WriteLine($"Utilisateur : {m_NomUtilisateur}");
+            Console.WriteLine($"Date d'emprunt : {m_DateEmprunt}");
+            Console.WriteLine($"Date d'écheance : {m_DateEcheance}");
+            Console.WriteLine($"Retourné : {(m_Retourne ? "Oui" : "Non")}");
+            if(m_Retourne) Console.WriteLine($"Date de retour : {m_DateRetour}");
         }
         #endregion
     }

@@ -47,7 +47,7 @@ class Program
 
         // Retournez un média
         Console.WriteLine("Retour du Livre 1 par l'utilisateur 1 :");
-        library.RetournerMedia(library.RechercherEmpruntParTitre("Livre 1", "Utilisateur 1").FirstOrDefault().GetMedia());
+        library.RetournerEmprunt(library[library.RechercherEmpruntParTitre("Livre 1", "Utilisateur 1").FirstOrDefault().GetMediaNumRef()]);
         Console.WriteLine("Retour effectué.");
 
         // Affichez tous les médias dans la bibliothèque après l'emprunt et le retour
@@ -65,6 +65,8 @@ class Program
         // Affichez tous les médias dans la bibliothèque après le chargement
         Console.WriteLine("\nMédias dans la bibliothèque après le chargement :");
         library.AfficherTousLesMedias();
+        Console.WriteLine("\nEmprunt fait à la bibliothèque après le chargement :");
+        library.AfficherTousLesEmprunts();
 
         Console.ReadKey();
         }

@@ -22,6 +22,15 @@ namespace Code.LibraryManager
         }
         #endregion
 
+        public List<Media> GetMedias()
+        {
+            return Medias;
+        }
+
+        public List<Emprunt> GetEmprunts()
+        {
+            return Emprunts;
+        }
         #region Public Méthodes : Indexeur
         // Indexeur pour accéder aux médias par leur numéro de référence
         public Media this[int p_numeroReference]
@@ -73,14 +82,14 @@ namespace Code.LibraryManager
         }
 
         // Méthode pour retourner un média emprunté
-        public void RetournerMedia(Media media)
+        public void RetournerEmprunt(Media media)
         {
             media.AddExemplaire();
             // Mettez à jour les enregistrements d'emprunt pour marquer le média comme retourné.
             // Recherchez l'emprunt correspondant pour marquer le média comme retourné
             if (Emprunts != null && Emprunts.Count > 0)
             {
-                Emprunt emprunt = Emprunts.Find(e => e.GetMedia() == media && !e.IsRetourned());
+                Emprunt emprunt = Emprunts.Find(e => e.GetMediaNumRef() == media.GetNumeroReference() && !e.IsRetourned());
                 if (emprunt != null)
                 {
                     emprunt.SetRetour(true);
@@ -134,7 +143,7 @@ namespace Code.LibraryManager
             {
                 if (emprunt.GetNomUtilisateur() == nomUtilisateur && !emprunt.IsRetourned())
                 {
-                    mediasEmpruntes.Add(emprunt.GetMedia());
+                    mediasEmpruntes.Add(Medias[emprunt.GetMediaNumRef()]);
                 }
             }
 
@@ -165,7 +174,7 @@ namespace Code.LibraryManager
 
         public List<Emprunt> RechercherEmpruntParTitre(string titre, string nomUtilisateur)
         {
-            return Emprunts.FindAll(emprunt => emprunt.GetMedia().GetTitre().Contains(titre, StringComparison.OrdinalIgnoreCase) && emprunt.GetNomUtilisateur() == nomUtilisateur);
+            return Emprunts.FindAll(emprunt => emprunt.GetMediaName().Contains(titre, StringComparison.OrdinalIgnoreCase) && emprunt.GetNomUtilisateur() == nomUtilisateur);
         }
 
         // Méthode pour rechercher un média par auteur

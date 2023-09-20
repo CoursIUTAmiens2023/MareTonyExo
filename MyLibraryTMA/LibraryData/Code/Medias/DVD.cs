@@ -5,7 +5,7 @@ namespace Data.Code.Medias
     public class Dvd : Media
     {
         #region Privates Members
-        private int m_Duree { get; set; }
+        public int m_Duree { get; set; }
         #endregion
 
         #region Constructeur

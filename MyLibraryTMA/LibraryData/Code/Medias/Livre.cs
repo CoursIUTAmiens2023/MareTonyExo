@@ -5,7 +5,7 @@ namespace Data.Code.Medias
     public class Livre : Media
     {
         #region Privates Members
-        private string m_Auteur { get; set; }
+        public string m_Auteur { get; set; }
         #endregion
 
         #region Constructeur

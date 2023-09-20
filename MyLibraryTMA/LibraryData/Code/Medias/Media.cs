@@ -5,9 +5,9 @@ namespace Data.Code.Medias
     public class Media
     {
         #region Privates Members
-        private string m_Titre { get; set; }
-        private int m_NumeroReference { get; set; }
-        private int m_NombreExemplairesDisponibles { get; set; }
+        public string m_Titre { get; set; }
+        public int m_NumeroReference { get; set; }
+        public int m_NombreExemplairesDisponibles { get; set; }
         #endregion
 
         #region Constructeur
