@@ -46,33 +46,43 @@ namespace Code.LibraryManager
             {
                 case "1":
                     AjouterMedia();
+                    WaitToMenu();
                     break;
                 case "2":
                     RetirerMedia();
+                    WaitToMenu();
                     break;
                 case "3":
                     NouvelEmprunt();
+                    WaitToMenu();
                     break;
                 case "4":
                     RetourEmprunt();
+                    WaitToMenu();
                     break;
                 case "5":
                     AfficherMedia();
+                    WaitToMenu();
                     break;
                 case "6":
                     AfficherEmprunt();
+                    WaitToMenu();
                     break;
                 case "7":
                     RechercherMedia();
+                    WaitToMenu();
                     break;
                 case "8":
                     RechercherEmprunt();
+                    WaitToMenu();
                     break;
                 case "9":
                     Charger();
+                    WaitToMenu();
                     break;
                 case "10":
                     Sauvegarder();
+                    WaitToMenu();
                     break;
                 case "11":
                     Quitter();
@@ -81,6 +91,15 @@ namespace Code.LibraryManager
                     ;
                     break;
             }
+        }
+
+        public void WaitToMenu()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Appuyez sur une touche pour continuer...");
+            Console.ReadKey();
+            Console.Clear();
+            MainMenu();
         }
 
         private void AjouterMedia()
@@ -179,6 +198,21 @@ namespace Code.LibraryManager
         private Emprunt RechercherEmprunt()
         {
             Emprunt v_emprunt = new Emprunt();
+            string v_resultUsr, v_resultNmref = String.Empty;
+            string v_typeSearch = GetUserResponse(ResponseType.Choice, String.Concat(
+                "# Rechercher un emprunt :", "\n",
+                "# 1. Saisir l'utilisateur et le numéro de référence du média", "\n",
+                "# 2. Quitter.", "\n"
+                )
+            );
+
+            if (v_typeSearch == "1")
+            {
+                v_resultUsr = GetUserResponse(ResponseType.String, "# Quel en est l'utilisateur ?");
+                v_resultNmref = GetUserResponse(ResponseType.Integer, "# Quel en est le numéro de référence ?");
+                v_emprunt = m_Library.RechercherEmpruntParNumeroDeReference(int.Parse(v_resultNmref), v_resultUsr).FirstOrDefault();
+            }
+
             return v_emprunt;
         }
 

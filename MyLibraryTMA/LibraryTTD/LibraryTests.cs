@@ -1,9 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Code.LibraryManager;
-using Data.Code;
 using Data.Code.Medias;
-using Data.Code.Tools;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace LibraryTTD
@@ -14,7 +11,6 @@ namespace LibraryTTD
         #region private members
 
         private Library m_Library;
-        //private readonly DataManager m_DataManager = new DataManager();
         private string m_MediaName;
         private string m_UserName;
         private int m_NbExemplaire;

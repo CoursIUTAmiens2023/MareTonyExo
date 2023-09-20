@@ -7,9 +7,9 @@ class Program
     static void Main(string[] args)
     {
         Library library = new Library();
-        //Interface v_menu = new Interface(library);
-        //v_menu.MainMenu();        
-        RunTest(library);
+        Interface v_menu = new Interface(library);
+        v_menu.MainMenu();        
+        //RunTest(library);
     }   
 
     public static void RunTest(Library library)
@@ -47,7 +47,7 @@ class Program
 
         // Retournez un média
         Console.WriteLine("Retour du Livre 1 par l'utilisateur 1 :");
-        library.RetournerEmprunt(library[library.RechercherEmpruntParTitre("Livre 1", "Utilisateur 1").FirstOrDefault().GetMediaNumRef()]);
+        library.RetournerEmprunt(library[library.RechercherEmpruntParNumeroDeReference(1, "Utilisateur 1").FirstOrDefault().GetMediaNumRef()]);
         Console.WriteLine("Retour effectué.");
 
         // Affichez tous les médias dans la bibliothèque après l'emprunt et le retour

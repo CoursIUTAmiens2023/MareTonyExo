@@ -177,6 +177,11 @@ namespace Code.LibraryManager
             return Emprunts.FindAll(emprunt => emprunt.GetMediaName().Contains(titre, StringComparison.OrdinalIgnoreCase) && emprunt.GetNomUtilisateur() == nomUtilisateur);
         }
 
+        public List<Emprunt> RechercherEmpruntParNumeroDeReference(int numeroReference, string nomUtilisateur)
+        {
+            return Emprunts.FindAll(emprunt => emprunt.GetMediaNumRef() == numeroReference && emprunt.GetNomUtilisateur() == nomUtilisateur);
+        }
+
         // Méthode pour rechercher un média par auteur
         public List<Media> RechercherMediaParAuteur(string auteur)
         {
