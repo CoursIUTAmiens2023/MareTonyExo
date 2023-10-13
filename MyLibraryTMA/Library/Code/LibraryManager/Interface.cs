@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Code.LibraryManager
 {
-    internal class Interface
+    public class Interface
     {
         internal Library m_Library;
 

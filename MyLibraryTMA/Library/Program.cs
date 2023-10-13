@@ -7,9 +7,9 @@ class Program
     static void Main(string[] args)
     {
         Library library = new Library();
-        Interface v_menu = new Interface(library);
-        v_menu.MainMenu();        
-        //RunTest(library);
+        RunTest(library);
+        //Interface menu = new Interface(library);
+        //menu.MainMenu();
     }   
 
     public static void RunTest(Library library)
@@ -58,6 +58,7 @@ class Program
         library.SaveLibrary();
         Console.WriteLine("\nÉtat de la bibliothèque sauvegardé dans le fichier 'bibliotheque.json'.");
 
+        library = new Library();
         // Chargez la bibliothèque à partir du fichier JSON
         library.LoadLibrary();
         Console.WriteLine("\nÉtat de la bibliothèque chargé à partir du fichier 'bibliotheque.json'.");
